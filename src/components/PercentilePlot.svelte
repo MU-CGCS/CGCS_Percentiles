@@ -143,7 +143,7 @@
         text: `<b>${p}%</b>`,
         showarrow: false,
         xanchor: 'left',
-        font: { color: 'white', size: 10 },
+        font: { color: 'white', size: 14 },
         bgcolor: percentileColors[p],
         borderpad: 2,
       }),
@@ -157,7 +157,7 @@
         y: 0.98,
         text: '<b>⚠️ Extreme Value</b>',
         showarrow: false,
-        font: { color: cfColors.error, size: 14 },
+        font: { color: cfColors.error, size: 18 },
       });
     }
 

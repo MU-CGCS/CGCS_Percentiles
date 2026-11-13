@@ -44,25 +44,25 @@ export function baseLayout(
 ): Partial<Layout> {
   const titleText = title
     ? subtitle
-      ? `<b>${title}</b><br><span style="font-size: 14px; color: #4A5568;">${subtitle}</span>`
+      ? `<b>${title}</b><br><span style="font-size: 18px; color: #4A5568;">${subtitle}</span>`
       : `<b>${title}</b>`
     : undefined;
   return {
     title: titleText
       ? {
           text: titleText,
-          font: { family: 'Inter, sans-serif', size: 16, color: '#1A202C' },
+          font: { family: 'Inter, sans-serif', size: 22, color: '#1A202C' },
           x: 0.02,
           xanchor: 'left',
         }
       : undefined,
-    font: { family: 'Inter, sans-serif', size: 12, color: '#2D3748' },
+    font: { family: 'Inter, sans-serif', size: 15, color: '#2D3748' },
     paper_bgcolor: '#FEFEFE',
     plot_bgcolor: '#FEFEFE',
     xaxis: {
       title: {
         text: 'Age (years)',
-        font: { size: 13, color: '#2D3748' },
+        font: { size: 18, color: '#2D3748' },
       },
       gridcolor: '#E2E8F0',
       zeroline: false,
@@ -70,13 +70,13 @@ export function baseLayout(
       linewidth: 1,
       ticks: 'outside',
       tickcolor: '#2D3748',
-      tickfont: { size: 11, color: '#4A5568' },
+      tickfont: { size: 16, color: '#4A5568' },
       dtick: 1,
     },
     yaxis: {
       title: {
         text: 'Distance (mm)',
-        font: { size: 13, color: '#2D3748' },
+        font: { size: 18, color: '#2D3748' },
       },
       gridcolor: '#E2E8F0',
       zeroline: false,
@@ -84,10 +84,10 @@ export function baseLayout(
       linewidth: 1,
       ticks: 'outside',
       tickcolor: '#2D3748',
-      tickfont: { size: 11, color: '#4A5568' },
+      tickfont: { size: 16, color: '#4A5568' },
     },
     showlegend: false,
-    margin: { t: 70, r: 50, b: 60, l: 60 },
+    margin: { t: 90, r: 60, b: 70, l: 75 },
     height: plotHeight,
   };
 }
