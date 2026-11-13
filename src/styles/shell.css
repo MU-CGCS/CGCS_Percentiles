@@ -236,7 +236,7 @@ body {
 
 .plot-container {
   width: 100%;
-  min-height: 450px;
+  min-height: 900px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: #fefefe;

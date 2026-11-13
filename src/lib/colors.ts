@@ -32,6 +32,10 @@ export const percentileColors: Record<number, string> = {
 
 export const observationRed = 'red';
 
+// Height of the percentile and growth-rate plots. Keep in sync with
+// .plot-container min-height in styles/shell.css.
+export const plotHeight = 900;
+
 // Shared layout replicating theme_cf_modern(): Inter font, light panel,
 // #E2E8F0 major grid, dark axis lines.
 export function baseLayout(
@@ -84,5 +88,6 @@ export function baseLayout(
     },
     showlegend: false,
     margin: { t: 70, r: 50, b: 60, l: 60 },
+    height: plotHeight,
   };
 }
