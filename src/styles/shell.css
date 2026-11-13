@@ -1,0 +1,353 @@
+/* App shell layout and form styling for the static web app. Replaces the
+   semantic.dashboard layout from the Shiny version; visual identity comes
+   from theme.css (ported custom-theme.css). */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* ===== Header ===== */
+
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--primary-gradient);
+  border-bottom: 1px solid var(--primary-dark);
+  box-shadow: var(--shadow-md);
+  padding: 0 var(--spacing-lg);
+  height: 56px;
+}
+
+.app-title {
+  color: #fefefe;
+  font-weight: 600;
+  font-size: var(--text-xl);
+  margin: 0;
+}
+
+.theme-toggle {
+  background: var(--primary-color);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: var(--radius-full);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===== Layout ===== */
+
+.app-layout {
+  display: flex;
+  min-height: calc(100vh - 56px);
+}
+
+.app-sidebar {
+  flex: 0 0 220px;
+  background: var(--white);
+  border-right: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-md);
+  padding: var(--spacing-md) 0;
+}
+
+.app-sidebar nav {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  display: block;
+  width: calc(100% - 2 * var(--spacing-md));
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--gray-600);
+  font-family: var(--font-family-sans);
+  font-size: var(--text-base);
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background: var(--primary-color);
+  color: #fefefe;
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.nav-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.app-content {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .app-sidebar {
+    flex: none;
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+  }
+
+  .app-sidebar nav {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .nav-item {
+    width: auto;
+  }
+
+  .app-content {
+    padding: var(--spacing-md);
+  }
+}
+
+/* ===== Forms ===== */
+
+.field {
+  margin-bottom: var(--spacing-lg);
+}
+
+.field label {
+  display: block;
+  margin-bottom: var(--spacing-xs);
+}
+
+.field input,
+.field select {
+  width: 100%;
+  background: var(--white);
+  color: var(--gray-700);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  font-size: var(--text-base);
+  font-family: var(--font-family-sans);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(27, 78, 140, 0.1);
+  outline: none;
+}
+
+.field .field-error {
+  color: var(--error-color);
+  font-size: var(--text-sm);
+  margin-top: var(--spacing-xs);
+}
+
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+/* ===== Results table (mirrors the DT styling) ===== */
+
+.cf-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  font-family: var(--font-family-sans);
+}
+
+.cf-table thead th {
+  background: var(--primary-gradient);
+  color: #fefefe;
+  padding: var(--spacing-lg);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-sm);
+  text-align: left;
+  border: none;
+}
+
+.cf-table tbody td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-top: 1px solid var(--gray-200);
+  font-size: var(--text-base);
+  color: var(--gray-700);
+}
+
+.cf-table tbody tr:nth-child(even) {
+  background: var(--gray-50);
+}
+
+.cf-table td.percentile-cell {
+  color: #8b1a1a;
+  font-weight: 700;
+}
+
+[data-theme='dark'] .cf-table td.percentile-cell {
+  color: #ff8a80;
+}
+
+/* ===== Plot containers ===== */
+
+.plot-wrap {
+  position: relative;
+}
+
+.plot-container {
+  width: 100%;
+  min-height: 450px;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: #fefefe;
+}
+
+/* HTML hover tooltip (replaces Plotly's SVG hover labels, which break
+   under Brave's fingerprinting protection). Styled to match Plotly's
+   native look: box filled with the trace color. */
+.cf-tooltip {
+  display: none;
+  position: absolute;
+  z-index: 10;
+  pointer-events: none;
+  padding: 6px 10px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  border-radius: 4px;
+  font-family: var(--font-family-sans);
+  font-size: 13px;
+  line-height: 1.4;
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+}
+
+/* Segments holding interactive Plotly charts must not transform or
+   animate: ancestor CSS transforms while Plotly draws hover labels
+   misplace SVG text in Safari, and a card that lifts on hover makes
+   precise hovering harder. Overrides .ui.segment:hover in theme.css. */
+.ui.segment.plot-segment,
+.ui.segment.plot-segment:hover {
+  transform: none !important;
+  animation: none !important;
+  transition: box-shadow var(--transition-normal) !important;
+}
+
+/* ===== Schematic ===== */
+
+.schematic {
+  position: relative;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.schematic img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.schematic svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Misc ===== */
+
+.page-title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.page-title .subtitle {
+  color: var(--gray-500);
+  font-size: var(--text-base);
+  font-weight: 400;
+}
+
+.text-muted {
+  color: var(--gray-500);
+  font-style: italic;
+}
+
+.static-page {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.static-page img {
+  max-width: 100%;
+  height: auto;
+}
+
+.figure-block {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+.tos-frame {
+  width: 100%;
+  height: 80vh;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  background: white;
+}
+
+.notice {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  font-size: var(--text-base);
+}
+
+.notice.error {
+  background: #fef2f2;
+  border: 1px solid var(--error-color);
+  color: #dc2626;
+}
+
+.notice.warning {
+  background: #fffbeb;
+  border: 1px solid var(--warning-color);
+  color: #a16207;
+}

@@ -1,0 +1,1125 @@
+/* Modern Medical Theme for Craniofacial Growth App */
+
+/* ============================================================================
+   CSS Custom Properties (CSS Variables) for Theme System
+   ============================================================================ */
+
+:root {
+  /* Primary Color Palette - Medical Professional */
+  --primary-color: #1B4E8C;
+  --primary-light: #2A5FA0;
+  --primary-dark: #154078;
+  --primary-hover: #1E5299;
+  
+  /* Secondary Colors */
+  --secondary-color: #20A39E;
+  --secondary-light: #2DB5B0;
+  --secondary-dark: #1A8B87;
+  
+  /* Accent Colors */
+  --accent-color: #FFB84D;
+  --accent-light: #FFC666;
+  --accent-dark: #E6A444;
+  
+  /* Success & Status Colors */
+  --success-color: #A8E6CF;
+  --success-dark: #7ED4A8;
+  --warning-color: #FFD93D;
+  --error-color: #FF6B6B;
+  --info-color: #4ECDC4;
+  
+  /* Neutral Colors */
+  --white: #FEFEFE;
+  --gray-50: #F7F9FC;
+  --gray-100: #F0F4F8;
+  --gray-200: #E2E8F0;
+  --gray-300: #CBD5E0;
+  --gray-400: #A0AEC0;
+  --gray-500: #718096;
+  --gray-600: #4A5568;
+  --gray-700: #2D3748;
+  --gray-800: #1A202C;
+  --gray-900: #171923;
+  
+  /* Background Gradients */
+  --background-gradient: linear-gradient(135deg, #f7f9fc 0%, #e2e8f0 100%);
+  --card-gradient: linear-gradient(145deg, #ffffff 0%, #f7f9fc 100%);
+  --primary-gradient: linear-gradient(135deg, #1B4E8C 0%, #2A5FA0 100%);
+  
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.04);
+  
+  /* Border Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  
+  /* Typography */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  --font-family-mono: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  
+  /* Font Sizes */
+  --text-xs: 0.75rem;    /* 12px */
+  --text-sm: 0.875rem;   /* 14px */
+  --text-base: 1rem;     /* 16px */
+  --text-lg: 1.125rem;   /* 18px */
+  --text-xl: 1.25rem;    /* 20px */
+  --text-2xl: 1.5rem;    /* 24px */
+  --text-3xl: 1.875rem;  /* 30px */
+  --text-4xl: 2.25rem;   /* 36px */
+  
+  /* Line Heights */
+  --leading-tight: 1.25;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.625;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease-in-out;
+  --transition-normal: 250ms ease-in-out;
+  --transition-slow: 350ms ease-in-out;
+}
+
+/* Dark Mode Variables */
+[data-theme="dark"] {
+  --white: #1A202C;
+  --gray-50: #2D3748;
+  --gray-100: #4A5568;
+  --gray-200: #718096;
+  --gray-300: #A0AEC0;
+  --gray-600: #CBD5E0;
+  --gray-700: #E2E8F0;
+  --gray-800: #F0F4F8;
+  --gray-900: #F7F9FC;
+  
+  /* Adjust primary colors for dark mode */
+  --primary-color: #3B82F6;
+  --primary-light: #60A5FA;
+  --primary-dark: #2563EB;
+  --secondary-color: #10B981;
+  --accent-color: #F59E0B;
+  
+  --background-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+  --card-gradient: linear-gradient(145deg, #2d3748 0%, #4a5568 100%);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Automatic dark mode based on system preference */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --white: #1A202C;
+    --gray-50: #2D3748;
+    --gray-100: #4A5568;
+    --gray-200: #718096;
+    --gray-300: #A0AEC0;
+    --gray-600: #CBD5E0;
+    --gray-700: #E2E8F0;
+    --gray-800: #F0F4F8;
+    --gray-900: #F7F9FC;
+    
+    --primary-color: #3B82F6;
+    --primary-light: #60A5FA;
+    --primary-dark: #2563EB;
+    --secondary-color: #10B981;
+    --accent-color: #F59E0B;
+    
+    --background-gradient: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    --card-gradient: linear-gradient(145deg, #2d3748 0%, #4a5568 100%);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.3), 0 2px 4px rgba(0, 0, 0, 0.2);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* ============================================================================
+   Global Styles and Typography
+   ============================================================================ */
+
+/* Inter is loaded via <link> in index.html (a mid-file @import is
+   invalid CSS and was silently ignored in the Shiny app). */
+
+body {
+  font-family: var(--font-family-sans);
+  background: var(--background-gradient);
+  color: var(--gray-700);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Typography Enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-sans);
+  font-weight: 600;
+  line-height: var(--leading-tight);
+  color: var(--gray-800);
+  margin-bottom: var(--spacing-md);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-base); }
+
+/* List Styling */
+ul, ol {
+  margin: var(--spacing-md) 0 var(--spacing-md) var(--spacing-2xl);
+  padding-left: var(--spacing-xl);
+  line-height: var(--leading-relaxed);
+}
+
+ul li, ol li {
+  margin-bottom: var(--spacing-xs);
+  color: var(--gray-700);
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ul ul {
+  list-style-type: circle;
+  margin-top: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+}
+
+ul ul ul {
+  list-style-type: square;
+}
+
+/* Ensure bullet points are positioned correctly */
+ul li {
+  padding-left: var(--spacing-xs);
+}
+
+/* Nested lists maintain proper indentation */
+ul li ul, ol li ul, ul li ol, ol li ol {
+  margin-left: var(--spacing-md);
+}
+
+/* ============================================================================
+   Dashboard Layout Enhancements
+   ============================================================================ */
+
+/* Dashboard Header */
+.main-header {
+  background: var(--primary-gradient) !important;
+  border-bottom: 1px solid var(--primary-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.main-header .navbar-brand {
+  color: var(--white) !important;
+  font-weight: 600;
+  font-size: var(--text-xl);
+}
+
+/* Dashboard Sidebar */
+.main-sidebar {
+  background: var(--white) !important;
+  border-right: 1px solid var(--gray-200);
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar-menu > li > a {
+  color: var(--gray-600) !important;
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  transition: all var(--transition-normal);
+  border-radius: var(--radius-md);
+  margin: var(--spacing-xs) var(--spacing-md);
+}
+
+.sidebar-menu > li > a:hover,
+.sidebar-menu > li.active > a {
+  background: var(--primary-color) !important;
+  color: var(--white) !important;
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar-menu > li > a > i {
+  margin-right: var(--spacing-md);
+  width: 20px;
+  text-align: center;
+}
+
+/* Content Area */
+.content-wrapper {
+  background: transparent !important;
+  padding: var(--spacing-xl);
+}
+
+/* ============================================================================
+   Card and Segment Enhancements
+   ============================================================================ */
+
+.ui.segment {
+  background: var(--card-gradient) !important;
+  border: 1px solid var(--gray-200) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md) !important;
+  padding: var(--spacing-xl) !important;
+  margin-bottom: var(--spacing-lg) !important;
+  transition: all var(--transition-normal);
+}
+
+.ui.segment:hover {
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-2px);
+}
+
+/* Container Enhancements */
+.ui.container {
+  max-width: 1200px !important;
+  padding: 0 var(--spacing-lg);
+}
+
+/* Header Styling */
+.ui.header {
+  color: var(--gray-800) !important;
+  font-family: var(--font-family-sans) !important;
+  font-weight: 600 !important;
+}
+
+.ui.header:first-child {
+  margin-top: 0 !important;
+}
+
+/* Grid Enhancements */
+.ui.grid > .column {
+  padding: var(--spacing-md) !important;
+}
+
+.ui.stackable.grid > .column {
+  padding: var(--spacing-md) !important;
+}
+
+/* ============================================================================
+   Form Control Enhancements
+   ============================================================================ */
+
+/* Select Inputs */
+.selectize-control .selectize-input,
+select.form-control {
+  background: var(--white) !important;
+  border: 2px solid var(--gray-200) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) !important;
+  font-size: var(--text-base) !important;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.selectize-control .selectize-input:focus,
+select.form-control:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(27, 78, 140, 0.1) !important;
+  outline: none !important;
+}
+
+/* Text Inputs */
+.form-control,
+input[type="text"],
+input[type="number"] {
+  background: var(--white) !important;
+  border: 2px solid var(--gray-200) !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) !important;
+  font-size: var(--text-base) !important;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+}
+
+.form-control:focus,
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: var(--primary-color) !important;
+  box-shadow: 0 0 0 3px rgba(27, 78, 140, 0.1) !important;
+  outline: none !important;
+}
+
+/* Form Labels */
+.control-label,
+label {
+  color: var(--gray-700) !important;
+  font-weight: 500 !important;
+  font-size: var(--text-sm) !important;
+  margin-bottom: var(--spacing-xs) !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ============================================================================
+   Button Enhancements
+   ============================================================================ */
+
+.ui.button,
+.btn {
+  background: var(--primary-color) !important;
+  color: var(--white) !important;
+  border: none !important;
+  border-radius: var(--radius-md) !important;
+  padding: var(--spacing-md) var(--spacing-xl) !important;
+  font-size: var(--text-base) !important;
+  font-weight: 500 !important;
+  text-transform: none !important;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  cursor: pointer;
+}
+
+.ui.button:hover,
+.btn:hover {
+  background: var(--primary-hover) !important;
+  box-shadow: var(--shadow-lg) !important;
+  transform: translateY(-1px);
+}
+
+.ui.primary.button {
+  background: var(--primary-gradient) !important;
+}
+
+.ui.secondary.button {
+  background: var(--secondary-color) !important;
+}
+
+.ui.secondary.button:hover {
+  background: var(--secondary-dark) !important;
+}
+
+/* ============================================================================
+   Data Table Enhancements
+   ============================================================================ */
+
+.dataTables_wrapper {
+  font-family: var(--font-family-sans) !important;
+}
+
+.dataTable {
+  border-collapse: separate !important;
+  border-spacing: 0 !important;
+  border-radius: var(--radius-lg) !important;
+  overflow: hidden !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+.dataTable thead th {
+  background: var(--primary-gradient) !important;
+  color: var(--white) !important;
+  padding: var(--spacing-lg) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--text-sm) !important;
+  border: none !important;
+}
+
+.dataTable tbody td {
+  padding: var(--spacing-md) var(--spacing-lg) !important;
+  border-top: 1px solid var(--gray-200) !important;
+  font-size: var(--text-base) !important;
+}
+
+.dataTable tbody tr:nth-child(even) {
+  background: var(--gray-50) !important;
+}
+
+.dataTable tbody tr:hover {
+  background: var(--primary-color) !important;
+  color: var(--white) !important;
+  transform: scale(1.01);
+  transition: all var(--transition-fast);
+}
+
+/* ============================================================================
+   Plot and Visualization Enhancements
+   ============================================================================ */
+
+.shiny-plot-output {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-md) !important;
+  overflow: hidden;
+  background: var(--white);
+  padding: var(--spacing-md);
+}
+
+/* ============================================================================
+   Loading and Progress Indicators
+   ============================================================================ */
+
+.shiny-spinner-output-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+/* Modern Loading States */
+.shiny-spinner-output-container {
+  position: relative;
+  min-height: 200px;
+}
+
+/* Custom Loading Spinner with Pulsing Effect */
+.modern-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--gray-200);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite, pulse 2s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Skeleton Loading for Plots */
+.plot-skeleton {
+  width: 100%;
+  height: 500px;
+  background: linear-gradient(90deg, var(--gray-100) 25%, var(--gray-50) 50%, var(--gray-100) 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+  border-radius: var(--radius-lg);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* Loading Overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  border-radius: var(--radius-lg);
+}
+
+[data-theme="dark"] .loading-overlay {
+  background: rgba(26, 32, 44, 0.9);
+}
+
+.loading-text {
+  margin-top: var(--spacing-md);
+  color: var(--gray-600);
+  font-weight: 500;
+  font-size: var(--text-base);
+}
+
+/* Progress Bar */
+.progress-bar {
+  background: var(--primary-gradient) !important;
+  border-radius: var(--radius-full) !important;
+  transition: width var(--transition-normal);
+}
+
+/* ============================================================================
+   Responsive Design
+   ============================================================================ */
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    padding: var(--spacing-md);
+  }
+  
+  .ui.container {
+    padding: 0 var(--spacing-md);
+  }
+  
+  .ui.segment {
+    padding: var(--spacing-lg) !important;
+  }
+  
+  .ui.stackable.grid > .column {
+    padding: var(--spacing-sm) !important;
+  }
+}
+
+/* ============================================================================
+   Utility Classes
+   ============================================================================ */
+
+.text-primary { color: var(--primary-color) !important; }
+.text-secondary { color: var(--secondary-color) !important; }
+.text-success { color: var(--success-dark) !important; }
+.text-warning { color: var(--warning-color) !important; }
+.text-error { color: var(--error-color) !important; }
+
+.bg-primary { background-color: var(--primary-color) !important; }
+.bg-secondary { background-color: var(--secondary-color) !important; }
+.bg-success { background-color: var(--success-color) !important; }
+
+.rounded-sm { border-radius: var(--radius-sm) !important; }
+.rounded-md { border-radius: var(--radius-md) !important; }
+.rounded-lg { border-radius: var(--radius-lg) !important; }
+
+.shadow-sm { box-shadow: var(--shadow-sm) !important; }
+.shadow-md { box-shadow: var(--shadow-md) !important; }
+.shadow-lg { box-shadow: var(--shadow-lg) !important; }
+
+/* ============================================================================
+   Animation and Micro-interactions
+   ============================================================================ */
+
+.fade-in {
+  animation: fadeIn var(--transition-slow) ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.slide-up {
+  animation: slideUp var(--transition-normal) ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Hover Effects */
+.hover-lift {
+  transition: transform var(--transition-normal);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+}
+
+/* ============================================================================
+   Modern Notifications and Alerts
+   ============================================================================ */
+
+/* Shiny Notifications */
+.shiny-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  min-width: 300px;
+  max-width: 400px;
+  padding: var(--spacing-lg);
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  font-family: var(--font-family-sans);
+  animation: slideInFromRight var(--transition-normal) ease-out;
+}
+
+.shiny-notification-content {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.shiny-notification-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: var(--gray-400);
+  transition: color var(--transition-fast);
+}
+
+.shiny-notification-close:hover {
+  color: var(--gray-600);
+}
+
+/* Notification Types */
+.shiny-notification-error {
+  border-left: 4px solid var(--error-color);
+  background: linear-gradient(145deg, #fef2f2, var(--white));
+}
+
+.shiny-notification-warning {
+  border-left: 4px solid var(--warning-color);
+  background: linear-gradient(145deg, #fffbeb, var(--white));
+}
+
+.shiny-notification-message {
+  border-left: 4px solid var(--info-color);
+  background: linear-gradient(145deg, #f0fdfa, var(--white));
+}
+
+.shiny-notification-success {
+  border-left: 4px solid var(--success-dark);
+  background: linear-gradient(145deg, #ecfdf5, var(--white));
+}
+
+/* Notification Icon */
+.notification-icon {
+  font-size: 24px;
+  margin-right: var(--spacing-sm);
+}
+
+.notification-icon.error { color: var(--error-color); }
+.notification-icon.warning { color: var(--warning-color); }
+.notification-icon.success { color: var(--success-dark); }
+.notification-icon.info { color: var(--info-color); }
+
+/* Slide in animation */
+@keyframes slideInFromRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Alert Components */
+.alert {
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--spacing-lg);
+  border-width: 1px;
+  border-style: solid;
+  font-family: var(--font-family-sans);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+}
+
+.alert-success {
+  background-color: #f0fdf4;
+  border-color: var(--success-dark);
+  color: #15803d;
+}
+
+.alert-warning {
+  background-color: #fffbeb;
+  border-color: var(--warning-color);
+  color: #a16207;
+}
+
+.alert-error {
+  background-color: #fef2f2;
+  border-color: var(--error-color);
+  color: #dc2626;
+}
+
+.alert-info {
+  background-color: #f0fdfa;
+  border-color: var(--info-color);
+  color: #0f766e;
+}
+
+/* ============================================================================
+   Accessibility Enhancements
+   ============================================================================ */
+
+/* Focus States */
+*:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* Skip Links */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--primary-color);
+  color: var(--white);
+  padding: 8px;
+  text-decoration: none;
+  border-radius: var(--radius-sm);
+  z-index: 10000;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #000080;
+    --secondary-color: #006400;
+    --error-color: #CC0000;
+    --warning-color: #FF8C00;
+    --success-color: #006400;
+    
+    --gray-200: #666666;
+    --gray-600: #000000;
+    --gray-700: #000000;
+  }
+  
+  .ui.segment {
+    border: 2px solid var(--gray-600) !important;
+  }
+  
+  .ui.button {
+    border: 2px solid var(--primary-color) !important;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .hover-lift:hover {
+    transform: none;
+  }
+  
+  .modern-spinner {
+    animation: none;
+    border-top-color: var(--primary-color);
+  }
+}
+
+/* Screen Reader Only Content */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Enhanced Button States for Accessibility */
+.ui.button:focus,
+.btn:focus {
+  box-shadow: 0 0 0 3px rgba(27, 78, 140, 0.3) !important;
+  outline: none;
+}
+
+.ui.button:disabled,
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Form Accessibility */
+.form-group {
+  margin-bottom: var(--spacing-lg);
+}
+
+label[for] {
+  cursor: pointer;
+}
+
+.required::after {
+  content: " *";
+  color: var(--error-color);
+}
+
+/* Error States */
+.form-control.error,
+input.error {
+  border-color: var(--error-color) !important;
+  box-shadow: 0 0 0 3px rgba(255, 107, 107, 0.1) !important;
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: var(--text-sm);
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.error-message::before {
+  content: "⚠️";
+  font-size: 14px;
+}
+
+/* Success States */
+.form-control.success,
+input.success {
+  border-color: var(--success-dark) !important;
+  box-shadow: 0 0 0 3px rgba(168, 230, 207, 0.2) !important;
+}
+
+.success-message {
+  color: var(--success-dark);
+  font-size: var(--text-sm);
+  margin-top: var(--spacing-xs);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.success-message::before {
+  content: "✓";
+  font-size: 14px;
+}
+
+/* ============================================================================
+   Disclaimer Modal Styles
+   ============================================================================ */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-overlay.hidden {
+  display: none;
+}
+
+.modal-content {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  animation: slideUp 0.3s ease-out;
+}
+
+.modal-header {
+  padding: var(--spacing-2xl) var(--spacing-2xl) var(--spacing-lg);
+  border-bottom: 2px solid var(--gray-200);
+  text-align: center;
+}
+
+.modal-title {
+  color: var(--primary-color);
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.modal-subtitle {
+  color: var(--gray-600);
+  font-size: var(--text-base);
+  margin: 0;
+  line-height: var(--leading-relaxed);
+}
+
+.modal-body {
+  padding: var(--spacing-lg) var(--spacing-2xl);
+}
+
+.disclaimer-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.disclaimer-section:last-child {
+  margin-bottom: 0;
+}
+
+.disclaimer-section h4 {
+  color: var(--primary-color);
+  font-size: var(--text-lg);
+  font-weight: 600;
+  margin: 0 0 var(--spacing-sm) 0;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.disclaimer-section h4::before {
+  content: "⚠️";
+  font-size: var(--text-base);
+}
+
+.disclaimer-section p {
+  color: var(--gray-700);
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  margin: 0;
+}
+
+.modal-footer {
+  padding: var(--spacing-lg) var(--spacing-2xl) var(--spacing-2xl);
+  text-align: center;
+  border-top: 2px solid var(--gray-200);
+}
+
+.btn-acknowledge {
+  background: var(--primary-gradient);
+  color: white;
+  border: none;
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md) var(--spacing-2xl);
+  font-size: var(--text-base);
+  font-weight: 600;
+  font-family: var(--font-family-sans);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-md);
+  min-width: 280px;
+}
+
+.btn-acknowledge:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  background: linear-gradient(135deg, #1E5299 0%, #3168B3 100%);
+}
+
+.btn-acknowledge:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-acknowledge:focus {
+  outline: none;
+  box-shadow: var(--shadow-lg), 0 0 0 3px rgba(27, 78, 140, 0.3);
+}
+
+/* Modal Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Dark Mode Modal Styles */
+[data-theme="dark"] .modal-content {
+  background: var(--gray-50);
+  border: 1px solid var(--gray-200);
+}
+
+[data-theme="dark"] .modal-header {
+  border-bottom-color: var(--gray-200);
+}
+
+[data-theme="dark"] .modal-footer {
+  border-top-color: var(--gray-200);
+}
+
+[data-theme="dark"] .modal-title {
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .disclaimer-section h4 {
+  color: var(--primary-light);
+}
+
+[data-theme="dark"] .disclaimer-section p {
+  color: var(--gray-700);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95%;
+    max-height: 85vh;
+    margin: var(--spacing-sm);
+  }
+  
+  .modal-header,
+  .modal-body,
+  .modal-footer {
+    padding-left: var(--spacing-lg);
+    padding-right: var(--spacing-lg);
+  }
+  
+  .modal-title {
+    font-size: var(--text-xl);
+  }
+  
+  .disclaimer-section h4 {
+    font-size: var(--text-base);
+  }
+  
+  .btn-acknowledge {
+    min-width: 240px;
+    padding: var(--spacing-sm) var(--spacing-lg);
+  }
+}
+
+/* Accessibility: Ensure modal is focusable and keyboard navigable */
+.modal-overlay[tabindex] {
+  outline: none;
+}
+
+.modal-content:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* Disabled navigation items until disclaimer acknowledged */
+.disabled-until-ack {
+  position: relative;
+}
+
+.disabled-until-ack::after {
+  content: "🔒";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  opacity: 0.7;
+}
