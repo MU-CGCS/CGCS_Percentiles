@@ -271,6 +271,19 @@ body {
   transition: box-shadow var(--transition-normal) !important;
 }
 
+/* Headings above the enlarged plots: sized to sit above the 22px Plotly
+   title rather than below it. */
+.ui.segment.plot-segment > h4 {
+  font-size: var(--text-3xl);
+  margin-bottom: var(--spacing-xs);
+}
+
+.ui.segment.plot-segment > .subtitle {
+  color: var(--gray-500);
+  font-size: var(--text-xl);
+  margin-bottom: var(--spacing-md);
+}
+
 /* ===== Schematic ===== */
 
 .schematic {
